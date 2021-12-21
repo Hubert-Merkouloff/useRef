@@ -16,28 +16,49 @@ import { useRef } from 'react';
 function App() {
 
   //! 2
-  const buttonRef = useRef();
+  const mainButtonRef = useRef();
+  const secondaryButtonRef = useRef();
 
-  const handleClick = () => {
+  const mainHandleClick = () => {
 
     //!4
-    const element = buttonRef.current.focus();
+    const mainElement = mainButtonRef.current;
+    const secondaryElement = secondaryButtonRef.current;
 
-    console.log(buttonRef.current);
- 
-  }
+    console.log(secondaryElement.classList.value.includes("blueBackground"));
+
+    if (mainElement.classList.value.includes("blueBackground")) { 
+      mainElement.classList.remove("blueBackground");
+      mainElement.classList.add("redBackground") 
+    } else  if (mainElement.classList.value.includes("redBackground")) { 
+      mainElement.classList.remove("redBackground");
+      mainElement.classList.add("blueBackground") 
+    };
+
+    
+    if (secondaryElement.classList.value.includes("redBackground")) { 
+      secondaryElement.classList.remove("redBackground");
+      secondaryElement.classList.add("blueBackground") 
+    };
+
+    
+   }
+
+
+  
+  
 
 
 
   return (
     <div className="App">
 
-      <button className="button" onClick={handleClick}>
+      <button className="button blueBackground" onClick={mainHandleClick} ref={mainButtonRef}>
         main button
       </button>
 
-      //!3
-      <button className="button" ref={buttonRef}>
+      {/* //!3 */}
+      <button className="button blueBackground" onClick={mainHandleClick} ref={secondaryButtonRef} >
         secondary button
       </button>
 
