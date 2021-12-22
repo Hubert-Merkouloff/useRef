@@ -36,7 +36,10 @@ function App() {
     };
 
     
-    if (secondaryElement.classList.value.includes("redBackground")) { 
+    if (secondaryElement.classList.value.includes("blueBackground")) { 
+      secondaryElement.classList.remove("blueBackground");
+      secondaryElement.classList.add("redBackground") 
+    } else  if (secondaryElement.classList.value.includes("redBackground")) { 
       secondaryElement.classList.remove("redBackground");
       secondaryElement.classList.add("blueBackground") 
     };
